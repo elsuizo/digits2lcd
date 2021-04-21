@@ -1,7 +1,7 @@
 # Digits to LCD String
 
 Convert a number to LCD String
-```bash
+```text
    _  _     _  _  _  _  _
 |  _| _||_||_ |_   ||_||_|
 | |_  _|  | _||_|  ||_| _|
