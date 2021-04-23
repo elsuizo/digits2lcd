@@ -9,73 +9,73 @@ use std::error::Error;
 
 #[derive(Debug)]
 struct Number<'a> {
-    digit: u32,
+    digit: char,
     representation: [&'a str; 3],
 }
 
 impl<'a> Number<'a> {
-    fn new(digit: u32) -> Self {
+    fn new(digit: char) -> Self {
         let mut representation = [""; 3];
         match digit {
-            0 => {
+            '0' => {
                 representation[0] = " _ ";
                 representation[1] = "| |";
                 representation[2] = "|_|";
             }
-            1 => {
+            '1' => {
                 representation[0] = "   ";
                 representation[1] = " | ";
                 representation[2] = " | ";
             }
-            2 => {
+            '2' => {
                 representation[0] = " _ ";
                 representation[1] = " _|";
                 representation[2] = "|_ ";
             }
-            3 => {
+            '3' => {
                 representation[0] = " _ ";
                 representation[1] = " _|";
                 representation[2] = " _|";
             }
-            4 => {
+            '4' => {
                 representation[0] = "   ";
                 representation[1] = "|_|";
                 representation[2] = "  |";
             }
-            5 => {
+            '5' => {
                 representation[0] = " _ ";
                 representation[1] = "|_ ";
                 representation[2] = " _|";
             }
-            6 => {
+            '6' => {
                 representation[0] = " _ ";
                 representation[1] = "|_ ";
                 representation[2] = "|_|";
             }
-            7 => {
+            '7' => {
                 representation[0] = " _ ";
                 representation[1] = "  |";
                 representation[2] = "  |";
             }
-            8 => {
+            '8' => {
                 representation[0] = " _ ";
                 representation[1] = "|_|";
                 representation[2] = "|_|";
             }
-            9 => {
+            '9' => {
                 representation[0] = " _ ";
                 representation[1] = "|_|";
                 representation[2] = " _|";
             }
-            _ => panic!("error")
+            _ => panic!("digit not soported")
         }
         Self{digit, representation}
     }
 }
 
-fn banner(digits: u32) {
+fn banner(digits: &str) {
     let mut numbers: Vec<Number> = Vec::new();
-    for digit in digits.to_string().chars().map(|d| d.to_digit(10).unwrap()) {
+    for digit in digits.chars() {
         numbers.push(Number::new(digit));
     }
     let mut banner0 = String::new();
@@ -93,7 +93,7 @@ fn banner(digits: u32) {
 
 fn main() -> Result<(), Box<dyn Error>> {
 
-    banner(12310000);
+    banner("12345678900092093420394810129801928");
 
     Ok(())
 }
